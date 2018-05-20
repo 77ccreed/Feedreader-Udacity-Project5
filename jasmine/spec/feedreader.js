@@ -22,7 +22,9 @@ $(function () {
          * page?
          */
         it('are defined', function () {
+            // allFeeds variable has been defined
             expect(allFeeds).toBeDefined();
+            // allFeeds variable is not empty
             expect(allFeeds.length).not.toBe(0);
         });
 
@@ -72,28 +74,63 @@ $(function () {
          * clicked and does it hide when clicked again.
          */
         it("changes visibility when clicked", () => {
+            // menu display when clicked
             $(".menu-icon-link").click();
             expect($("body").hasClass("menu-hidden")).toBe(false);
-
+            // it hide when clicked
             $('.menu-icon-link').click();
-            expect($('body').hasClass('menu-hidden')).toBe(true); 
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
     });
     /* TODO: Write a new test suite named "Initial Entries" */
     describe("Initial Entries", () => {
-
-    
-    /* TODO: Write a test that ensures when the loadFeed
-     * function is called and completes its work, there is at least
-     * a single .entry element within the .feed container.
-     * Remember, loadFeed() is asynchronous so this test will require
-     * the use of Jasmine's beforeEach and asynchronous done() function.
-     */
+        /* TODO: Write a test that ensures when the loadFeed
+         * function is called and completes its work, there is at least
+         * a single .entry element within the .feed container.
+         * Remember, loadFeed() is asynchronous so this test will require
+         * the use of Jasmine's beforeEach and asynchronous done() function.
+         */
+        // loadFeed() is asynchronous
+        let feedLength;
+        beforeEach((done) => {
+            loadFeed(0, () => {
+                feedLength = $('.feed .entry').length;
+                done();
+            });
+        });
+        // at least a single.entry element
+        it('has at least one entry', (done) => {
+            expect(feedLength).toBeGreaterThan(0);
+            done();
+        });
     });
-    /* TODO: Write a new test suite named "New Feed Selection" */
 
-    /* TODO: Write a test that ensures when a new feed is loaded
-     * by the loadFeed function that the content actually changes.
-     * Remember, loadFeed() is asynchronous.
-     */
+    /* Test suite that checks the feed functionality*/
+    describe('New Feed Selection', () => {
+        /* Test that ensures when a new feed is loaded
+         * by the loadFeed function that the content actually changes.
+         */
+
+         // 
+        let feedA,
+            feedB;
+
+        beforeEach((done) => {
+            loadFeed(0, () => {
+                feedA = document.querySelector('.feed').innerHTML;
+            });
+
+            loadFeed(1, () => {
+                feedB = document.querySelector('.feed').innerHTML;
+                done();
+            });
+        });
+
+        /* Check if feeds have been added to the feedList*/
+        it('loads new feeds', (done) => {
+            expect(feedB !== feedA).toBe(true);
+            done();
+        });
+    });
+
 }());
