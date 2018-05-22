@@ -73,6 +73,7 @@ $(function () {
          * should have two expectations: does the menu display when
          * clicked and does it hide when clicked again.
          */
+        // menu display when clicked and hide when clicked again
         it("changes visibility when clicked", () => {
             // menu display when clicked
             $(".menu-icon-link").click();
@@ -111,10 +112,11 @@ $(function () {
          * by the loadFeed function that the content actually changes.
          */
 
-         // 
+        // two different feed
         let feedA,
             feedB;
 
+        // loadFeed() is asynchronous
         beforeEach((done) => {
             loadFeed(0, () => {
                 feedA = document.querySelector('.feed').innerHTML;
