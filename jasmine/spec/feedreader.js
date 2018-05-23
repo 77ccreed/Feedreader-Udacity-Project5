@@ -63,9 +63,7 @@ $(function () {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-
         let bodyElement;
-
         beforeEach(function () {
             bodyElement = document.getElementsByTagName('body')[0];
         });
@@ -79,22 +77,15 @@ $(function () {
          * clicked and does it hide when clicked again.
          */
         // menu display when clicked and hide when clicked again
-
         it("changes visibility when clicked", () => {
             // menu display when clicked
             const menuIcon = document.querySelector('.menu-icon-link');
-
+            // it show when clicked
             menuIcon.click();
             expect(bodyElement.classList.contains('menu-hidden')).toBe(false);
-
+            // it hide when clicked
             menuIcon.click();
             expect(bodyElement.classList.contains('menu-hidden')).toBe(true);
-
-           // $(".menu-icon-link").click();
-          //  expect($("body").hasClass("menu-hidden")).toBe(false);
-            // it hide when clicked
-           // $('.menu-icon-link').click();
-           // expect($('body').hasClass('menu-hidden')).toBe(true);
         });
     });
 
