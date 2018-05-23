@@ -82,11 +82,19 @@ $(function () {
 
         it("changes visibility when clicked", () => {
             // menu display when clicked
-            $(".menu-icon-link").click();
-            expect($("body").hasClass("menu-hidden")).toBe(false);
+            const menuIcon = document.querySelector('.menu-icon-link');
+
+            menuIcon.click();
+            expect(bodyElement.classList.contains('menu-hidden')).toBe(false);
+
+            menuIcon.click();
+            expect(bodyElement.classList.contains('menu-hidden')).toBe(true);
+
+           // $(".menu-icon-link").click();
+          //  expect($("body").hasClass("menu-hidden")).toBe(false);
             // it hide when clicked
-            $('.menu-icon-link').click();
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+           // $('.menu-icon-link').click();
+           // expect($('body').hasClass('menu-hidden')).toBe(true);
         });
     });
 
