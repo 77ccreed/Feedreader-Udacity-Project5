@@ -28,7 +28,6 @@ $(function () {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
@@ -57,7 +56,6 @@ $(function () {
 
     });
 
-
     /* TODO: Write a new test suite named "The menu" */
     describe("The menu", function () {
         /* TODO: Write a test that ensures the menu element is
@@ -65,8 +63,15 @@ $(function () {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+
+        let bodyElement;
+
+        beforeEach(function () {
+            bodyElement = document.getElementsByTagName('body')[0];
+        });
+
         it("hides menu by default", () => {
-            expect($("body").hasClass("menu-hidden")).toBe(true);
+            expect(bodyElement.classList.contains('menu-hidden')).toBe(true);
         });
         /* TODO: Write a test that ensures the menu changes
          * visibility when the menu icon is clicked. This test
@@ -74,6 +79,7 @@ $(function () {
          * clicked and does it hide when clicked again.
          */
         // menu display when clicked and hide when clicked again
+
         it("changes visibility when clicked", () => {
             // menu display when clicked
             $(".menu-icon-link").click();
@@ -83,6 +89,7 @@ $(function () {
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
     });
+
     /* TODO: Write a new test suite named "Initial Entries" */
     describe("Initial Entries", () => {
         /* TODO: Write a test that ensures when the loadFeed
@@ -129,10 +136,10 @@ $(function () {
         });
 
         /* Check if feeds have been added to the feedList*/
+        // compare two different feed
         it('loads new feeds', (done) => {
             expect(feedB !== feedA).toBe(true);
             done();
         });
     });
-
 }());
