@@ -13,6 +13,6 @@ I learn how to use Jasmine to write a number of tests against a pre-existing app
 ## How to run 
 
 * Download or clone the repository: https://github.com/77ccreed/Feedreader-Udacity-Project5
- * Open index.html with your browser
+* Open index.html with your browser
 
 * Or just use online view: https://77ccreed.github.io/Feedreader-Udacity-Project5/#
